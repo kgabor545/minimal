@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo</title>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>To do lista adatbázis</h1>
-<input type="text" id="title" placeholder="Új todo">
-<button id="add">Hozzáadás</button>
 
-<script src="script.js"></script>
+<div class="add-box">
+    <input type="text" id="title" placeholder="Új todo">
+    <button id="add">Hozzáadás</button>
+
+ <ul id="todo-list"></ul>
+
 </body>
 </html>
