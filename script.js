@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', loadTodos);
 
 btn.addEventListener('click', async (e) => {
     const title = input.value;
+    // ez megakadályozza a submit hagyományos módon történő lefutását
     e.preventDefault();
     if (!title) return;
 
