@@ -5,8 +5,9 @@ const list = document.getElementById('todo-list');
 /* ÚJ: oldalbetöltéskor taskok betöltése */
 document.addEventListener('DOMContentLoaded', loadTodos);
 
-btn.addEventListener('click', async () => {
+btn.addEventListener('click', async (e) => {
     const title = input.value;
+    e.preventDefault();
     if (!title) return;
 
     await fetch('db-insert.php', {

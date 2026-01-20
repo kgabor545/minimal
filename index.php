@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Todo</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="script.js?a2" defer></script>
 </head>
 <body>
 <div class="add-box">
