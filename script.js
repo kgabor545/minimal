@@ -1,14 +1,19 @@
-const btn = document.getElementById("add")
+
+const form = document.getElementById("todoForm")
 const input = document.getElementById("title")
 const list = document.getElementById("todo-list")
 
-/* ÚJ: oldalbetöltéskor taskok betöltése */
-document.addEventListener("DOMContentLoaded", loadTodos)
+loadTodos();
 
-btn.addEventListener('click', async (e) => {
-    const title = input.value;
-    // ez megakadályozza a submit hagyományos módon történő lefutását
+
+form.addEventListener('submit', async (e) => {
+    // DEBUG: csak a submit esemény jelzése
+    console.log('submit');
+
+    // megakadályozza az oldal újratöltését
     e.preventDefault();
+
+    const title = input.value.trim();
     if (!title) return;
 
   await fetch("db-insert.php", {
