@@ -9,12 +9,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     /* nagyon visszafogott háttér */
     background: #f6f7f9;
 }
 
 .add-box {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -42,7 +44,7 @@ body {
 
 #title::placeholder {
     color: #888;
-}
+}   
 
 #add {
     height: 40px;
@@ -70,5 +72,4 @@ body {
     padding: 12px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    margin-left: 10px;
 }

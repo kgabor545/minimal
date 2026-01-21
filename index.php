@@ -13,8 +13,6 @@
     <button id="add">Hozzáadás</button>
 </div> 
 <br>
-<br>
-<br>
 <div class = "list">
  <ul id="todo-list"></ul>
 </div>
