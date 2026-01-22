@@ -3,7 +3,7 @@ const input = document.getElementById('title');
 const list = document.getElementById('todo-list');
 
 /* ÚJ: oldalbetöltéskor taskok betöltése */
-loadTodos();
+document.addEventListener('DOMContentLoaded', loadTodos);
 
 form.addEventListener('submit', async (e) => {
     // DEBUG: csak a submit esemény jelzése
