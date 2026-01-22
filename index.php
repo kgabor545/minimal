@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <div class="add-box">
+<form id="todoForm">
     <input type="text" id="title" placeholder="Új todo">
-    <button id="add">Hozzáadás</button>
+    <button type="submit" id="add">Hozzáadás</button>
+</form>
 
  <ul id="todo-list"></ul>
 
