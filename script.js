@@ -36,7 +36,27 @@ async function loadTodos() {
     const isDone = Number(todo.completed) === 1
     const icon = isDone ? "✔" : "✖"
 
-    li.textContent = `${icon} ${todo.title}`
+    const iconSpan = document.createElement("span")
+    iconSpan.textContent = icon
+    iconSpan.style.cursor = "pointer"
+
+    iconSpan.addEventListener("click", async () => {
+      await fetch("toggle.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: todo.id,
+          completed: isDone ? 0 : 1,
+        }),
+      })
+      loadTodos()
+    })
+
+    const titleSpan = document.createElement("span")
+    titleSpan.textContent = todo.title
+
+    li.appendChild(iconSpan)
+    li.appendChild(titleSpan)
     list.appendChild(li)
   })
 }
