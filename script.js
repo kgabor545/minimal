@@ -1,45 +1,42 @@
-const btn = document.getElementById('add');
-const input = document.getElementById('title');
-const list = document.getElementById('todo-list');
+const btn = document.getElementById("add");
+const input = document.getElementById("title");
+const list = document.getElementById("todo-list");
 
 /* ÚJ: oldalbetöltéskor taskok betöltése */
-document.addEventListener('DOMContentLoaded', loadTodos);
+document.addEventListener("DOMContentLoaded", loadTodos);
 
-btn.addEventListener('click', async () => {
-    const title = input.value;
-    if (!title) return;
+btn.addEventListener("click", async () => {
+  const title = input.value;
+  if (!title) return;
 
-    await fetch('db-insert.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ title })
-    });
+  await fetch("db-insert.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title }),
+  });
 
-    input.value = '';
+  input.value = "";
 
-    /* ÚJ: mentés után frissítjük a listát */
-    loadTodos();
+  /* ÚJ: mentés után frissítjük a listát */
+  loadTodos();
 });
 
 /* ÚJ: taskok lekérése és kirajzolása */
 async function loadTodos() {
-    const response = await fetch('db-select.php');
-    const todos = await response.json();
+  const response = await fetch("db-select.php");
+  const todos = await response.json();
 
-    list.innerHTML = '';
+  list.innerHTML = "";
 
-   todos.forEach(todo => {
-    const li = document.createElement('li');
+  todos.forEach((todo) => {
+    const li = document.createElement("li");
 
     const isDone = Number(todo.completed) === 1;
-    const icon = isDone ? '✔' : '✖';
+    const icon = isDone ? "✔" : "✖";
 
     li.textContent = `${icon} ${todo.title}`;
     list.appendChild(li);
-});
-
+  });
 }
-
- 
