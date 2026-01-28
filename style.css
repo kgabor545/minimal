@@ -64,6 +64,7 @@ body {
 #add:hover {
   background: #000;
 }
+
 .list {
   display: flex;
   align-items: center;
@@ -72,4 +73,10 @@ body {
   padding: 12px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+#todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
