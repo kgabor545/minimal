@@ -90,13 +90,13 @@ body {
     transform 0.1s ease;
 }
 
-#add:hover {
+/* #add:hover {
   background: #1e40af;
-}
+} */
 
-#add:active {
+/* #add:active {
   transform: scale(0.96);
-}
+} */
 
 /* TODO LIST */
 #todo-list {
@@ -127,9 +127,9 @@ body {
     box-shadow 0.12s ease;
 }
 
-.list:hover {
+/* .list:hover {
   transform: translateY(-1px);
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.1),
     0 1px 0 rgba(255, 255, 255, 0.8) inset;
-}
+} */
