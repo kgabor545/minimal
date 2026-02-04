@@ -1,20 +1,19 @@
-
 const form = document.getElementById("todoForm")
 const input = document.getElementById("title")
 const list = document.getElementById("todo-list")
 
-loadTodos();
+/* ÚJ: oldalbetöltéskor taskok betöltése */
+document.addEventListener("DOMContentLoaded", loadTodos)
 
+form.addEventListener("submit", async (e) => {
+  // DEBUG: csak a submit esemény jelzése
+  console.log("submit")
 
-form.addEventListener('submit', async (e) => {
-    // DEBUG: csak a submit esemény jelzése
-    console.log('submit');
+  // megakadályozza az oldal újratöltését
+  e.preventDefault()
 
-    // megakadályozza az oldal újratöltését
-    e.preventDefault();
-
-    const title = input.value.trim();
-    if (!title) return;
+  const title = input.value.trim()
+  if (!title) return
 
   await fetch("db-insert.php", {
     method: "POST",
