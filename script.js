@@ -2,11 +2,11 @@ const btn = document.getElementById("add")
 const input = document.getElementById("title")
 const list = document.getElementById("todo-list")
 
-/* ÚJ: oldalbetöltéskor taskok betöltése */
+/* oldalbetöltéskor taskok betöltése */
 document.addEventListener("DOMContentLoaded", loadTodos)
 
 btn.addEventListener("click", async () => {
-  const title = input.value
+  const title = input.value.trim()
   if (!title) return
 
   await fetch("db-insert.php", {
@@ -18,12 +18,10 @@ btn.addEventListener("click", async () => {
   })
 
   input.value = ""
-
-  /* ÚJ: mentés után frissítjük a listát */
   loadTodos()
 })
 
-/* ÚJ: taskok lekérése és kirajzolása */
+/* taskok lekérése és kirajzolása */
 async function loadTodos() {
   const response = await fetch("db-select.php")
   const todos = await response.json()
@@ -33,6 +31,7 @@ async function loadTodos() {
   todos.forEach((todo) => {
     const li = document.createElement("li")
 
+    /* ===== KÉSZ / NINCS KÉSZ ===== */
     const isDone = Number(todo.completed) === 1
     const icon = isDone ? "✔" : "✖"
 
@@ -52,9 +51,32 @@ async function loadTodos() {
       loadTodos()
     })
 
+    /* ===== CÍM + FONTOS FLAG ===== */
     const titleSpan = document.createElement("span")
-    titleSpan.textContent = todo.title
+    titleSpan.style.cursor = "pointer"
 
+    const isImportant = Number(todo.important) === 1
+
+    titleSpan.textContent = todo.title + (isImportant ? " (FONTOS)" : "")
+
+    if (isImportant) {
+      titleSpan.style.fontWeight = "bold"
+      titleSpan.style.color = "darkred"
+    }
+
+    titleSpan.addEventListener("click", async () => {
+      await fetch("important.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: todo.id,
+          important: isImportant ? 0 : 1,
+        }),
+      })
+      loadTodos()
+    })
+
+    /* ===== DOM ===== */
     li.appendChild(iconSpan)
     li.appendChild(titleSpan)
     list.appendChild(li)
