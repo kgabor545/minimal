@@ -15,11 +15,17 @@ body {
   align-items: center;
   flex-direction: column;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   background-image: url("akep.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 
   color: #222;
+  align-items: center;
 }
 
 .add-box {
