@@ -40,6 +40,41 @@ async function loadTodos() {
     iconSpan.textContent = icon
     iconSpan.style.cursor = "pointer"
 
+    /* Új: módosítás gomb*/
+    const text = document.createElement("span")
+    const button = document.createElement("button")
+    button.textContent = "modosítás"
+
+    let editing = false
+
+    button.addEventListener("click", async () => {
+      if (!editing) {
+        const input = document.createElement("input")
+        input.type = "text"
+        input.value = todo.title
+
+        li.replaceChild(input, text)
+        button.textContent = "mentés"
+        input.focus()
+        editing = true
+      } else {
+        const input = li.querySelector("input")
+        const newTitle = input.value
+
+        const response = await fetch("db-update.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: todo.id,
+            title: newTitle,
+          }),
+        })
+
+        loadTodos()
+      }
+    })
     iconSpan.addEventListener("click", async () => {
       await fetch("toggle.php", {
         method: "POST",
@@ -55,6 +90,8 @@ async function loadTodos() {
     const titleSpan = document.createElement("span")
     titleSpan.textContent = todo.title
 
+    li.appendChild(text)
+    li.appendChild(button)
     li.appendChild(iconSpan)
     li.appendChild(titleSpan)
     list.appendChild(li)
