@@ -60,3 +60,25 @@ async function loadTodos() {
     list.appendChild(li)
   })
 }
+
+// GOOGLE KERESÉS – az ikon kivételével a szövegre kattintva indul
+document.getElementById("todo-list").addEventListener("click", function (e) {
+  // Ha az ikonra kattintott → ne induljon keresés (toggle már kezeli)
+  if (e.target.textContent === "✔" || e.target.textContent === "✖") {
+    return
+  }
+
+  // Megkeressük a todo címét a sorban
+  const li = e.target.closest("li")
+  if (!li) return
+
+  // A második <span> általában a cím (az első az ikon)
+  const titleSpan = li.querySelector("span:nth-child(2)")
+  if (!titleSpan) return
+
+  const todoSzoveg = titleSpan.textContent.trim()
+  if (!todoSzoveg) return
+
+  const kereses = encodeURIComponent(todoSzoveg)
+  window.open(`https://www.google.com/search?q=${kereses}`, "_blank")
+})
