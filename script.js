@@ -43,7 +43,7 @@ async function loadTodos() {
     /* Új: módosítás gomb*/
     const text = document.createElement("span")
     const button = document.createElement("button")
-    button.textContent = "modosítás"
+    button.textContent = "🖊️"
 
     let editing = false
 
@@ -53,8 +53,8 @@ async function loadTodos() {
         input.type = "text"
         input.value = todo.title
 
+        button.textContent = "💾"
         li.replaceChild(input, text)
-        button.textContent = "mentés"
         input.focus()
         editing = true
       } else {
@@ -90,10 +90,10 @@ async function loadTodos() {
     const titleSpan = document.createElement("span")
     titleSpan.textContent = todo.title
 
-    li.appendChild(text)
-    li.appendChild(button)
     li.appendChild(iconSpan)
     li.appendChild(titleSpan)
+    li.appendChild(button)
+    li.appendChild(text)
     list.appendChild(li)
   })
 }

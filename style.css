@@ -125,4 +125,19 @@ body {
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease;
+  width: 300px;
+}
+
+input{
+  padding-block: 0px;
+  padding-inline: 0px;
+}
+
+button{
+  background-color: transparent;
+  border: transparent;
+  border-radius: 5px;
+  padding: 0px;
+  font-size: 15px;
+  cursor: pointer;
 }
