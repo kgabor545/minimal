@@ -49,7 +49,7 @@ async function loadTodos() {
     /* Új: módosítás gomb*/
     const text = document.createElement("span")
     const button = document.createElement("button")
-    button.textContent = "🖊️"
+    button.textContent = "✏️"
 
     let editing = false
 

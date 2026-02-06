@@ -116,11 +116,6 @@ body {
   width: 300px;
 }
 
-input{
-  padding-block: 0px;
-  padding-inline: 0px;
-}
-
 button{
   background-color: transparent;
   border: transparent;
