@@ -96,10 +96,26 @@ async function loadTodos() {
     const titleSpan = document.createElement("span")
     titleSpan.textContent = todo.title
 
+    const delBtn = document.createElement("button")
+    delBtn.textContent = "🗑"
+    delBtn.style.marginLeft = "10px"
+
+    delBtn.addEventListener("click", async () => {
+      li.remove()
+
+      await fetch("db-delete.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: todo.id }),
+      })
+    })
+
     li.appendChild(text)
     li.appendChild(button)
     li.appendChild(iconSpan)
     li.appendChild(titleSpan)
+    li.appendChild(delBtn)
     list.appendChild(li)
   })
 }
+
