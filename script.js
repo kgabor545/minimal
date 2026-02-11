@@ -99,6 +99,18 @@ async function loadTodos() {
     li.appendChild(titleSpan)
     li.appendChild(button)
     li.appendChild(text)
+
+    /* ÚJ: Google keresés ikon */
+    const googleBtn = document.createElement("button")
+    googleBtn.textContent = "🔍"
+    googleBtn.style.marginLeft = "6px"
+    googleBtn.addEventListener("click", () => {
+      const query = encodeURIComponent(todo.title)
+      window.open(`https://www.google.com/search?q=${query}`, "_blank")
+    })
+
+    li.appendChild(googleBtn) // Google kereső gomb hozzáadása
+
     list.appendChild(li)
   })
 }
