@@ -42,7 +42,7 @@ body {
     0 10px 25px rgba(0, 0, 0, 0.08),
     0 1px 0 rgba(255, 255, 255, 0.8) inset;
 
-    background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow:
@@ -115,7 +115,7 @@ body {
     0 8px 20px rgba(0, 0, 0, 0.08),
     0 1px 0 rgba(255, 255, 255, 0.8) inset;
 
-    background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow:
@@ -130,7 +130,7 @@ body {
   width: 300px;
 }
 
-button{
+button {
   background-color: transparent;
   border: transparent;
   border-radius: 5px;
@@ -143,4 +143,19 @@ button{
 #todo-list li.selected {
   background-color: rgba(30, 58, 138, 0.15); /* halvány kék háttér */
   border-radius: 6px;
+}
+
+.important {
+  background-color: #fff8e1;
+  border-left-color: red; /* nem ad hozzá új border-t */
+  font-weight: 600;
+  padding-left: 8px; /* hogy ne csússzon rá a szöveg */
+  margin-bottom: 6px; /* hogy ne érjenek össze */
+  box-sizing: border-box; /* a border ne tolja szét a layoutot */
+}
+
+li {
+  padding: 8px 12px;
+  border-left: 4px solid transparent; /* mindig van helye */
+  transition: all 0.2s ease;
 }

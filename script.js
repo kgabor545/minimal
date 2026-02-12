@@ -53,6 +53,27 @@ async function loadTodos() {
     iconSpan.textContent = icon
     iconSpan.style.cursor = "pointer"
 
+    /* IMPORTANT beszúrás */
+    const isImportant = Number(todo.important) === 1
+    const importantSpan = document.createElement("span")
+    importantSpan.textContent = isImportant ? "❗" : "❗"
+    importantSpan.style.cursor = "pointer"
+    importantSpan.style.marginRight = "6px"
+
+    if (isImportant) {
+      li.classList.add("important")
+    }
+
+    importantSpan.addEventListener("click", async () => {
+      await fetch("toggle-important.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: todo.id, important: isImportant ? 0 : 1 }),
+      })
+      loadTodos()
+    })
+    /* IMPORTANT vége */
+
     /* Új: módosítás gomb*/
     const text = document.createElement("span")
     const button = document.createElement("button")
@@ -103,6 +124,7 @@ async function loadTodos() {
     numberSpan.style.fontWeight = "bold"
 
     li.appendChild(numberSpan)
+    li.appendChild(importantSpan) // beszúrva
     li.appendChild(iconSpan)
     li.appendChild(titleSpan)
     li.appendChild(button)
