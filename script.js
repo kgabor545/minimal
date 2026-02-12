@@ -54,7 +54,6 @@ async function loadTodos() {
     iconSpan.style.cursor = "pointer"
 
     /* Új: módosítás gomb*/
-    const text = document.createElement("span")
     const button = document.createElement("button")
     button.textContent = "✏️"
 
@@ -70,6 +69,23 @@ async function loadTodos() {
         li.replaceChild(input, titleSpan)
         input.focus()
         editing = true
+
+        function handleClickOutside(e) {
+          if (!li.contains(e.target)) {
+            cancelEdit()
+          }
+        }
+
+        function cancelEdit() {
+          li.replaceChild(titleSpan, input)
+          button.textContent = "✏️"
+          editing = false
+          document.removeEventListener("click", handleClickOutside)
+        }
+
+        setTimeout(() => {
+          document.addEventListener("click", handleClickOutside)
+        }, 0)
       } else {
         const input = li.querySelector("input")
         const newTitle = input.value
@@ -79,6 +95,9 @@ async function loadTodos() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ id: todo.id, title: newTitle }),
         })
+
+        document.removeEventListener("click", handleClickOutside) // ✅ remove it
+        editing = false
 
         loadTodos()
       }
@@ -106,7 +125,6 @@ async function loadTodos() {
     li.appendChild(iconSpan)
     li.appendChild(titleSpan)
     li.appendChild(button)
-    li.appendChild(text)
     list.appendChild(li)
   })
 }
