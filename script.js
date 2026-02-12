@@ -1,9 +1,13 @@
 const form = document.getElementById("todoform")
 const input = document.getElementById("title")
 const list = document.getElementById("todo-list")
+const hideDoneCheckbox = document.getElementById("hide-done")
 
 /* ÚJ: oldalbetöltéskor taskok betöltése */
 document.addEventListener("DOMContentLoaded", loadTodos)
+
+/* ÚJ: checkbox váltáskor frissít */
+hideDoneCheckbox.addEventListener("change", loadTodos)
 
 form.addEventListener("submit", async (e) => {
   // DEBUG: csak a submit esemény jelzése
@@ -34,8 +38,12 @@ async function loadTodos() {
 
   list.innerHTML = ""
 
-  // index a sorszámhoz
+  const hideDone = hideDoneCheckbox.checked
+
   todos.forEach((todo, index) => {
+    /* ÚJ: kész feladat elrejtése */
+    if (hideDone && Number(todo.completed) === 1) return
+
     const li = document.createElement("li")
 
     const isDone = Number(todo.completed) === 1
@@ -59,7 +67,7 @@ async function loadTodos() {
         input.value = todo.title
 
         button.textContent = "💾"
-        li.replaceChild(input, text)
+        li.replaceChild(input, titleSpan)
         input.focus()
         editing = true
       } else {
