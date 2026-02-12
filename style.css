@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  background-image: url("akep.jpg");
+  background-image: url("12.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -42,7 +42,7 @@ body {
     0 10px 25px rgba(0, 0, 0, 0.08),
     0 1px 0 rgba(255, 255, 255, 0.8) inset;
 
-    background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow:
@@ -115,9 +115,9 @@ body {
     0 8px 20px rgba(0, 0, 0, 0.08),
     0 1px 0 rgba(255, 255, 255, 0.8) inset;
 
-    background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.08),
     0 1px 0 rgba(255, 255, 255, 0.2) inset;
