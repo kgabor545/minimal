@@ -15,8 +15,14 @@
 </form>
 </div> 
 <br>
+<label>
+    <input type="checkbox" id="hide-done">
+    Kész feladatok elrejtése
+</label>
+
 <div class="list">
- <ul id="todo-list"></ul>
+    <ul id="todo-list"></ul>
 </div>
+
 </body>
 </html>
