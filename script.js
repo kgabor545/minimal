@@ -107,7 +107,9 @@ async function loadTodos() {
     li.appendChild(titleSpan)
     li.appendChild(button)
     li.appendChild(text)
-
+    list.appendChild(li)
+  })
+}
     /* ÚJ: Google keresés ikon */
     const googleBtn = document.createElement("button")
     googleBtn.textContent = "🔍"
